@@ -11,7 +11,7 @@ public interface StudentRepo {
 	public boolean saveStudent(Student student)throws SQLException;
 	public boolean deleteStudentByRoll(int roll);
 	public Student getStudentByRoll(int roll) throws SQLException;
-	public List<Student> getAllStudents();
+	public List<Student> getAllStudents() throws SQLException;
 	public boolean updateStudent(Student student);
 	public Connection getDbConnection() throws SQLException;
 }

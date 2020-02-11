@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.capg.studentapp.model.Student;
@@ -49,9 +50,17 @@ public class StudentRepoImpl implements StudentRepo {
 	}
 
 	@Override
-	public List<Student> getAllStudents() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Student> getAllStudents() throws SQLException {
+		con=getDbConnection();
+		ps=con.prepareStatement("select * from student");
+		rs=ps.executeQuery();
+		Student s=null;
+		List<Student> studentList=new ArrayList<>();
+		while(rs.next()) {
+			 s=new Student(rs.getInt(1),rs.getString(2),rs.getInt(3));
+			 studentList.add(s);
+		}
+		return studentList;
 	}
 
 	@Override
