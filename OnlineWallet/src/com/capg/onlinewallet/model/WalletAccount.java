@@ -1,5 +1,6 @@
 package com.capg.onlinewallet.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class WalletAccount {
@@ -8,7 +9,7 @@ public class WalletAccount {
 	float balance;
 	long phone;
 	String userName;
-	List<WalletTransaction> transactions;
+	List<WalletTransaction> transactions=new ArrayList<WalletTransaction>();
 	public WalletAccount() {
 		// TODO Auto-generated constructor stub
 	}

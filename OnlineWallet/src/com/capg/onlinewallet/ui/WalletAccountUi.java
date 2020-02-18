@@ -1,5 +1,6 @@
 package com.capg.onlinewallet.ui;
 
+import java.time.LocalDate;
 import java.util.Scanner;
 
 import com.capg.onlinewallet.model.WalletAccount;
@@ -54,7 +55,12 @@ public class WalletAccountUi {
 		System.out.println("Enter wallet id :");
 		long id=in.nextLong();
 		WalletAccount acc=walletService.getAccountInfo(id);
-		System.out.println(acc);
+		System.out.println("Account id : "+acc.getWalletId());
+		System.out.println("Current balance : "+acc.getBalance());
+		System.out.println("Recent two transaction: ");
+		acc.getTransactions().stream()
+			.filter(t->t.getTransactionDate().isAfter(LocalDate.of(2020, 02, 15)))
+			.forEach(t->System.out.println(t));
 		
 	}
 }

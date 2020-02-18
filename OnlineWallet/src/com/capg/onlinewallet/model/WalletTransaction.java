@@ -5,6 +5,14 @@ import java.time.LocalDate;
 public class WalletTransaction {
 	long transactionId;
 	LocalDate transactionDate;
+	String transactionDetails;
+	
+	public String getTransactionDetails() {
+		return transactionDetails;
+	}
+	public void setTransactionDetails(String transactionDetails) {
+		this.transactionDetails = transactionDetails;
+	}
 	public WalletTransaction() {
 		// TODO Auto-generated constructor stub
 	}
@@ -39,9 +47,13 @@ public class WalletTransaction {
 			return false;
 		return true;
 	}
+
+	
+	
 	@Override
 	public String toString() {
-		return "WalletTransaction [transactionId=" + transactionId + ", transactionDate=" + transactionDate + "]";
+		return "WalletTransaction [transactionId=" + transactionId + ", transactionDate=" + transactionDate
+				+ ", transactionDetails=" + transactionDetails + "]";
 	}
 	public long getTransactionId() {
 		return transactionId;

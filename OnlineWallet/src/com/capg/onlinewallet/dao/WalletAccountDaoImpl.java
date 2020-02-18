@@ -1,9 +1,12 @@
 package com.capg.onlinewallet.dao;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import com.capg.onlinewallet.model.WalletAccount;
 import com.capg.onlinewallet.model.WalletTransaction;
@@ -17,7 +20,9 @@ public class WalletAccountDaoImpl implements WalletAccountDao {
 	}
 	public void addSomeWalletAccount() {
 		WalletAccount ac1=new WalletAccount(1001121312L,2000.0F,99586566L,"Rahul",
-					Arrays.asList(new WalletTransaction(1012121L,LocalDate.now())));
+					Arrays.asList(new WalletTransaction(1012121L,LocalDate.now()),
+							new WalletTransaction(1012115L,LocalDate.now().minusDays(10)),
+							new WalletTransaction(1012125L,LocalDate.now().minusDays(1))));
 		WalletAccount ac2=new WalletAccount(10011213021L,1000.0F,99586562L,"Mahesh",
 				Arrays.asList(new WalletTransaction(10125323L,LocalDate.now().minusDays(100))));
 		
@@ -31,6 +36,7 @@ public class WalletAccountDaoImpl implements WalletAccountDao {
 			return false;
 		}
 		walletAccounts.put(account.getWalletId(), account);
+		
 		return true;
 	}
 
@@ -57,7 +63,19 @@ public class WalletAccountDaoImpl implements WalletAccountDao {
 			return false;
 		}
 		WalletAccount acc=walletAccounts.get(id);
+		WalletTransaction tx=new WalletTransaction();
+		tx.setTransactionId(Math.abs(new Random().nextLong()));
+		tx.setTransactionDate(LocalDate.now());
+		tx.setTransactionDetails("Rs. "+amount+" Added..");
+		List<WalletTransaction> trns=new ArrayList<WalletTransaction>();
+		for(WalletTransaction t:acc.getTransactions()) {
+			trns.add(t);
+		}
+		trns.add(tx);
+		acc.setTransactions(trns);
+		
 		acc.setBalance(acc.getBalance()+amount);
+		
 		return true;
 		
 		
