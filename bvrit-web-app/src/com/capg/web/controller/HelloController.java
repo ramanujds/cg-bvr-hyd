@@ -14,7 +14,7 @@ public class HelloController extends HttpServlet{
 	@Override
 	public void doPost(HttpServletRequest req,HttpServletResponse res) throws IOException {
 		String uName=req.getParameter("tbName");
-		PrintWriter out=res.getWriter();
-		out.println("Hello "+uName);
+		
+		
 	}
 }

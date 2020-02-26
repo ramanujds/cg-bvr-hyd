@@ -4,17 +4,17 @@ public class CalculatorService {
 
 	public float calculate(int x,int y,String option) {
 		float result=0;
-		switch(option) {
-		case "Add":
+		switch(option.toLowerCase()) {
+		case "add":
 			result=x+y;
 			break;
-		case "Subtract":
+		case "subtract":
 			result=x-y;
 			break;
-		case "Multiply":
+		case "multiply":
 			result=x*y;
 			break;
-		case "Divide":
+		case "divide":
 			result=x/(float)y;
 			break;
 		}
