@@ -30,12 +30,13 @@ public class SquareController extends HttpServlet {
 			}
 		}
 		
-//		HttpSession ssn=request.getSession();
+		HttpSession ssn=request.getSession();
 //		float result=(float)ssn.getAttribute("result");
 		
 		//float result=Float.parseFloat(request.getParameter("result"));
 		float square=result*result;
-		out.print("<h1>Result = "+square+"</h1>");
+		ssn.setAttribute("square", square);
+		response.sendRedirect("view.jsp");
 		
 		
 	}
