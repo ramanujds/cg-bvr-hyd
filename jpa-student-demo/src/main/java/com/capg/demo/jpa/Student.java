@@ -2,16 +2,22 @@ package com.capg.demo.jpa;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "student_data")
+@NamedQuery(name="getByName",
+				query ="from Student s where s.sName=:sName" )
 public class Student {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int roll;
-	@Column(name = "student_name",length = 30, nullable = false)
+	@Column(name = "student_name",length = 30, nullable = false, unique = true)
 	private String sName;
 	@Column(nullable = false)
 	private int age;
@@ -22,9 +28,9 @@ public class Student {
 	
 	
 
-	public Student(int roll, String sName, int age) {
+	public Student(String sName, int age) {
 		super();
-		this.roll = roll;
+		//this.roll = roll;
 		this.sName = sName;
 		this.age = age;
 	}
