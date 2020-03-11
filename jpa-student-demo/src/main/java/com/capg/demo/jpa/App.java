@@ -1,5 +1,6 @@
 package com.capg.demo.jpa;
 
+import java.util.Arrays;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -24,16 +25,54 @@ public class App
     	EntityManager em=factory.createEntityManager();
     	EntityTransaction tx=em.getTransaction();
     	
+//    	CaseStudy cs=new CaseStudy("Bank Management");
+//    	Student s1=new Student("Abhishek",21);
+//    	Student s2=new Student("Rebeca",21);
+//    	Student s3=new Student("Prameela",21);
+//    	
+//    	s1.setCs(cs);
+//    	s2.setCs(cs);
+//    	s3.setCs(cs);
+//    	
+//    	cs.getStudent().addAll(Arrays.asList(s1,s2,s3));
+//    	
+//    	
+//    	    	
+//    	tx.begin();
+//    	em.persist(cs);
+//    	em.persist(s1);
+//    	em.persist(s2);
+//    	em.persist(s3);
+//    	tx.commit();
+//    	
+//    	System.out.println("Inserted...");
+//    	
+//    	CaseStudy cs1=em.find(CaseStudy.class,1);
+//    	
+//    	cs1.printCaseStudy();
+    	
+    	
+//    	Student s1=em.find(Student.class, 2);
+//    	
+//    	System.out.println(s1);
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
   //Querying Data
     //Named Queries
     	
-    	TypedQuery<Student> q=em.createNamedQuery("getByName",
-    												Student.class);
-    	q.setParameter("sName", "Tushar");
-    	Student s=q.getSingleResult();
-    	
-    	System.out.println(s);
-   	
+//    	TypedQuery<Student> q=em.createNamedQuery("getByName",
+//    												Student.class);
+//    	q.setParameter("sName", "Tushar");
+//    	Student s=q.getSingleResult();
+//    	
+//    	System.out.println(s);
+//   	
     	
     	
     	

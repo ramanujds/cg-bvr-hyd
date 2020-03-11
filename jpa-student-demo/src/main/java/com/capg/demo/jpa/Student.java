@@ -1,10 +1,13 @@
 package com.capg.demo.jpa;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
@@ -21,6 +24,9 @@ public class Student {
 	private String sName;
 	@Column(nullable = false)
 	private int age;
+	@ManyToMany(mappedBy = "student")
+	private List<CaseStudy> cs;
+	
 	
 	public Student() {
 		// TODO Auto-generated constructor stub
@@ -33,6 +39,22 @@ public class Student {
 		//this.roll = roll;
 		this.sName = sName;
 		this.age = age;
+	}
+
+	
+
+	
+
+
+
+	public List<CaseStudy> getCs() {
+		return cs;
+	}
+
+
+
+	public void setCs(List<CaseStudy> cs) {
+		this.cs = cs;
 	}
 
 
@@ -61,9 +83,13 @@ public class Student {
 		this.age = age;
 	}
 
+
+
 	@Override
 	public String toString() {
 		return "Student [roll=" + roll + ", sName=" + sName + ", age=" + age + "]";
 	}
+
+	
 	
 }
