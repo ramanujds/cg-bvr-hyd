@@ -22,6 +22,9 @@ public class Mobile {
 		sim.browse();
 	}
 	
+	public void printAllContacts() {
+		sim.printAllContacts();
+	}
 	
 	
 	

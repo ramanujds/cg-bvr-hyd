@@ -6,10 +6,36 @@
     http://www.springframework.org/schema/context 
     http://www.springframework.org/schema/context/spring-context.xsd">
      
-     <bean id="airtel" class="com.capg.demo.spring.AirtelSim"/>
+     <bean id="airtel" class="com.capg.demo.spring.AirtelSim">
+     <property name="callCharges" value="1.5"/>
+     <property name="internetSpeed" value="8.5"/>
+     <property name="contacts">
+     <list>
+     <value>Rohan</value>
+     <value>Mohit</value>
+     <value>Raju</value>
+     </list>
+     </property>
+     </bean>
+     
+      <bean id="airtel1" class="com.capg.demo.spring.AirtelSim">
+     <constructor-arg name="callCharges" value="2.5"/>
+     <constructor-arg name="internetSpeed" value="6.5"/>
+      </bean>
      
      
-    <bean id="vodafone" class="com.capg.demo.spring.VodafoneSim"/>
+    <bean id="vodafone" class="com.capg.demo.spring.VodafoneSim">
+     <property name="callCharges" value="1.5"/>
+     <property name="internetSpeed" value="8.5"/>
+     <property name="contacts">
+     <map>
+     <entry key="Mohit" value="785654631"/>
+     <entry key="Pritam" value="8548411601"/>
+     <entry key="Nishan" value="7895616961"/>
+     </map>
+     </property>
+     </bean>
+     
      
      <bean id="mobile" class="com.capg.demo.spring.Mobile">
      <property name="sim" ref="vodafone"/>

@@ -19,5 +19,6 @@ public class App
 
        samsung.browseInternet();
        samsung.makeACall();
+       samsung.printAllContacts();
     }
 }
