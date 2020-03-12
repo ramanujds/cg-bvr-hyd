@@ -9,6 +9,13 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+import javax.persistence.criteria.Selection;
+
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Restrictions;
 
 /**
  * Hello world!
@@ -24,6 +31,37 @@ public class App
     	
     	EntityManager em=factory.createEntityManager();
     	EntityTransaction tx=em.getTransaction();
+    	
+    	
+//    	Mobile m1=new Mobile("S10","Samsung");
+//    	Mobile m2=new Mobile("Note 7","Redmi");
+//    	Mobile m3=new Mobile("IPhone 11","Apple");
+//    	
+//    	tx.begin();
+//    	
+//    	em.persist(m1);
+//    	em.persist(m2);
+//    	em.persist(m3);
+//    	tx.commit();
+    	List<Mobile> mobiles;
+    	
+    	CriteriaBuilder cb=em.getCriteriaBuilder();
+    	
+    	CriteriaQuery<Mobile> cqMobiles=cb.createQuery(Mobile.class);
+    	
+    	Root<Mobile> mobRoot=cqMobiles.from(Mobile.class);
+    	cqMobiles.where(cb.equal(mobRoot.get("brand"), "Samsung"));
+    	
+    	CriteriaQuery<Mobile> selectMobile=cqMobiles.select(mobRoot);
+    	
+    	Query q1=em.createQuery(selectMobile);
+    	
+    	 mobiles=q1.getResultList();
+    	
+    	mobiles.forEach(System.out::println);
+    	
+    	
+    	
     	
 //    	CaseStudy cs=new CaseStudy("Bank Management");
 //    	Student s1=new Student("Abhishek",21);
