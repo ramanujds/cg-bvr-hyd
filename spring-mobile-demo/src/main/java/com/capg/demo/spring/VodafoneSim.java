@@ -2,10 +2,17 @@ package com.capg.demo.spring;
 
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+@Component("vodafone")
 public class VodafoneSim implements Sim{
 
+	@Value("${vodafone.callCharges}")
 	private float callCharges;
+	@Value("${vodafone.internetSpeed}")
 	private float internetSpeed;
+	@Value("#{${vodafone.contacts}}")
 	Map<String, Long> contacts;
 	
 	

@@ -2,11 +2,18 @@ package com.capg.demo.spring;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+@Component("airtel")
 public class AirtelSim implements Sim{
 
 	
+	@Value("${airtel.callCharges}")
 	private float callCharges;
+	@Value("${airtel.internetSpeed}")
 	private float internetSpeed;
+	@Value("#{${airtel.contacts}}")
 	private List<String> contacts;
 	
 	

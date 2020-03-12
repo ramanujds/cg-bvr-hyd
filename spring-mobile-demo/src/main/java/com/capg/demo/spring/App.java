@@ -1,6 +1,7 @@
 package com.capg.demo.spring;
 
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
@@ -14,7 +15,7 @@ public class App
        Mobile samsung;
        
        ApplicationContext context=
-    		   new ClassPathXmlApplicationContext("spring.xml");
+    		   new AnnotationConfigApplicationContext(MobileConfigurations.class);
        samsung=(Mobile)context.getBean("mobile");
 
        samsung.browseInternet();
