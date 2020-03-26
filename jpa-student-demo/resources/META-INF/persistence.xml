@@ -6,7 +6,6 @@
 	<persistence-unit name="CapgStudent"
 		transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-		<!-- <class></class>  -->
 		<properties>
 			<property name="javax.persistence.jdbc.driver"
 				value="oracle.jdbc.OracleDriver" />

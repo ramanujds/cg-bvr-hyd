@@ -1,17 +1,22 @@
 package com.capg.demo.jpa;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "mobile_info")
 public class Mobile {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int serialNo;
-	
+	@Column(unique = true)
+	private long imei;
 	private String model;
+	@Column(name = "phone_brand")
 	private String brand;
 	
 	public Mobile() {
