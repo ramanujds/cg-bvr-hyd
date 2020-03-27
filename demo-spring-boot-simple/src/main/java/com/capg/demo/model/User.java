@@ -2,18 +2,29 @@ package com.capg.demo.model;
 
 import java.time.LocalDate;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+@Entity
+@Table(name = "user_info")
 public class User {
 
-	@Size(min = 3, max = 30)
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int userId;
+	
+	
 	private String userName;
-	@Email
+
 	private String email;
-	@Size(max = 80, min = 15)
+	
 	private int age;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dob;
@@ -28,6 +39,15 @@ public class User {
 		this.email = email;
 		this.age = age;
 		this.dob = dob;
+	}
+
+	
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
 	public String getUserName() {

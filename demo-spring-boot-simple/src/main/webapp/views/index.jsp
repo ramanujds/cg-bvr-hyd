@@ -8,7 +8,22 @@
 </head>
 <body>
 
-<form action="show" method="post">
+<h3>Find User</h3>
+<div>
+<form action="get-user" method="get">
+
+Email <input type="email" name="tEmail">
+
+<button type="submit">Enter</button>
+
+</form>
+
+
+</div>
+<br>
+<br>
+<h3>Add User</h3>
+<form action="add" method="post">
 Name <input type="text" name="userName"><br>
 Email <input type="email" name="email"><br>
 DOB <input type="date" name="dob"><br>

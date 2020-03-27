@@ -1,5 +1,6 @@
 package com.capg.demo.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,24 +13,35 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.capg.demo.model.User;
+import com.capg.demo.service.UserService;
 
 @Controller
 //@RequestMapping("/trainee-info")
-public class ShowController {
+public class UserController {
 
-	@Value("${college-name}")
-	String collegeName;
+	@Autowired
+	UserService service;
 	
 	//@RequestMapping(value = "/show",method = RequestMethod.POST)
-	@PostMapping("/show")
+	@PostMapping("/add")
 	public ModelAndView show(@ModelAttribute User user) {
 		
+		User savedUser=service.saveUser(user);
 		
 		ModelAndView mv=new ModelAndView();
-		mv.setViewName("hello");
-		mv.addObject("user",user);
+		mv.setViewName("success");
+		mv.addObject("user",savedUser);
 		return mv;
 		}
+	
+	@GetMapping("/get-user")
+	public String getUserByEmail(@RequestParam("tEmail") String email,
+			Model m) {
+		User user=service.getUserByEmail(email);
+		m.addAttribute("user",user);
+		return "show";
+	}
+	
 	@GetMapping("/")
 	public String showIndexPage(){
 		return "index";
