@@ -9,8 +9,10 @@
 <body>
 
 <form action="show" method="post">
-Name <input type="text" name="tName">
-Age <input type="number" name="tAge">
+Name <input type="text" name="userName"><br>
+Email <input type="email" name="email"><br>
+DOB <input type="date" name="dob"><br>
+Age <input type="number" name="age"><br>
 <button type="submit">Enter</button>
 
 </form>

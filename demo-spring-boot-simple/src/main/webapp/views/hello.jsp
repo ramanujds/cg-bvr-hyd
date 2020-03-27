@@ -7,8 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>Hello ${tName} ...</h1>
-<h2>Age : ${age} </h2>
-<h2>College :  ${college} </h2>
+<h1>Hello ${user.userName} ...</h1>
+<h2>DOB:  ${user.dob} </h2>
+<h2>Age : ${user.age} </h2>
+<h2>Email:  ${user.email} </h2>
 </body>
 </html>
