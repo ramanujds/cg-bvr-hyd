@@ -11,7 +11,7 @@ Instructions for Spring Boot with JSP
 
 1) Download ojdbc6.jar
 2) Download Maven - https://mirrors.estointernet.in/apache/maven/maven-3/3.6.3/source/apache-maven-3.6.3-src.zip
-3) Run Command (CMD)
+3) Run Command (CMD) : 
     mvn install:install-file -Dfile=[Path to ojdbc6.jar] -DgroupId=com.oracle -DartifactId=ojdbc6 -Dversion=11.2.0 -Dpackaging=jar
 4) Add the following dependency to maven project (pom.xml)
         <dependency>
