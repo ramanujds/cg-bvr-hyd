@@ -22,6 +22,21 @@ Email <input type="email" name="tEmail">
 </div>
 <br>
 <br>
+<h1>Delete User</h1>
+<div>
+<form action="delete" method="get">
+
+Email <input type="email" name="tEmail">
+
+<button type="submit">Delete</button>
+
+</form>
+
+</div>
+
+
+<br>
+<br>
 <h3>Add User</h3>
 <form action="add" method="post">
 Name <input type="text" name="userName"><br>

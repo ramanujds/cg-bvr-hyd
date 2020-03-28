@@ -1,5 +1,7 @@
 package com.capg.demo.repository;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -27,6 +29,10 @@ public class UserRepo {
 		return user;
 	}
 	
+	public List<User> getAllUsers(){
+		TypedQuery<User> q=em.createQuery("from User",User.class);
+		return q.getResultList();
+	}
 	
 	
 }

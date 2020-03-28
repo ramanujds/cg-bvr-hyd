@@ -47,6 +47,14 @@ public class UserController {
 		return "index";
 	}
 	
+	@GetMapping("/delete")
+	public String deleteUserByEmail(@RequestParam("tEmail")String email) {
+		if(service.deleteUser(email)) {
+			return "delete-success";
+		}
+		return "delete-failed";
+		
+	}
 }
 
 
