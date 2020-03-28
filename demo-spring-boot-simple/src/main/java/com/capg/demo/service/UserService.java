@@ -41,4 +41,17 @@ public class UserService {
 		return !jpaRepo.existsById(user.getUserId());
 	}
 
+	public User updateUser(User newUserData) {
+		// TODO Auto-generated method stub
+		User oldUserData=jpaRepo.checkByEmail(newUserData.getEmail());
+		if(oldUserData==null) {
+			throw new UserNotFoundException("No user found with email : "+newUserData.getEmail());
+		}
+		
+		oldUserData.setAge(newUserData.getAge());
+		oldUserData.setDob(newUserData.getDob());
+		oldUserData.setUserName(newUserData.getUserName());
+		return jpaRepo.save(oldUserData);
+	}
+
 }
