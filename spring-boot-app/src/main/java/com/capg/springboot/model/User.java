@@ -12,6 +12,12 @@ public class User {
 	private LocalDate dob;
 	private long phone;
 	private int age;
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
 	public User() {
 		// TODO Auto-generated constructor stub
 	}

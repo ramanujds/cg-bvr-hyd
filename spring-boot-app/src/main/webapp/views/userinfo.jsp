@@ -11,5 +11,6 @@ Name : ${user.userName}
 Email : ${user.email}
 Phone : ${user.phone}
 DOB : ${user.dob}
+AGE : ${user.age}
 </body>
 </html>
