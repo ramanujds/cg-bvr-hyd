@@ -14,10 +14,22 @@ import com.capg.springboot.model.User;
 @Service
 public class UserService {
 
-	Map<Integer, User> users=new HashMap<>();
+	Map<Integer, User> users;
 	
+	
+	
+	
+	public Map<Integer, User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(Map<Integer, User> users) {
+		this.users = users;
+	}
+
 	@PostConstruct
 	public void addSomeUsers() {
+		users=new HashMap<>();
 		User user1=new User(101, "Rahul", "rahul@gmail.com", 78554841303L);
 		User user2=new User(102, "Gourav", "gaurav@gmail.com", 4578512503L);
 		User user3=new User(103, "Harsh", "harsh@gmail.com", 4584541303L);
@@ -27,7 +39,7 @@ public class UserService {
 		users.put(user3.getUserId(), user3);
 	}
 	
-	public List<User> getUsers(){
+	public List<User> getListOfUsers(){
 		List<User> allUser=new ArrayList<User>();
 		users.forEach((k,v)->allUser.add(v));
 		return allUser;
@@ -45,6 +57,15 @@ public class UserService {
 	public boolean deleteUser(int userId) {
 		 users.remove(userId);
 		 return !users.containsKey(userId);
+	}
+
+	public User updateUse(User newUserData) {
+		User oldUserData=users.get(newUserData.getUserId());
+		oldUserData.setEmail(newUserData.getEmail());
+		oldUserData.setPhone(newUserData.getPhone());
+		oldUserData.setUserName(newUserData.getUserName());
+		return oldUserData;
+		
 	}
 	
 	
