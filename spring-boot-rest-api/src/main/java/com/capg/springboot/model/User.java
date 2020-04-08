@@ -3,6 +3,9 @@ package com.capg.springboot.model;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "user_info")
@@ -12,7 +15,12 @@ public class User {
 	private int userId;
 	private String userName;
 	private String email;
+	@JsonIgnore
 	private long phone;
+	
+	@Transient
+	int xyz;
+	
 	public User(int userId, String userName, String email, long phone) {
 		super();
 		this.userId = userId;

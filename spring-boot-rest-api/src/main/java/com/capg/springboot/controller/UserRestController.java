@@ -80,5 +80,8 @@ public class UserRestController {
 		return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
 	}
 	
-	
+	@GetMapping("/users/email/{email}")
+	public User getUserByEmail(@PathVariable String email) {
+		return service.getUserByEmail(email);
+	}
 }
