@@ -1,7 +1,14 @@
 package com.capg.springboot.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "user_info")
 public class User {
 
+	@Id
 	private int userId;
 	private String userName;
 	private String email;

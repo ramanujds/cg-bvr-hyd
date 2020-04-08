@@ -7,64 +7,41 @@ import java.util.Map;
 
 import javax.annotation.PostConstruct;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.capg.springboot.model.User;
+import com.capg.springboot.repository.UserRepo;
 
 @Service
 public class UserService {
 
-	Map<Integer, User> users;
-	
-	
-	
-	
-	public Map<Integer, User> getUsers() {
-		return users;
-	}
-
-	public void setUsers(Map<Integer, User> users) {
-		this.users = users;
-	}
-
-	@PostConstruct
-	public void addSomeUsers() {
-		users=new HashMap<>();
-		User user1=new User(101, "Rahul", "rahul@gmail.com", 78554841303L);
-		User user2=new User(102, "Gourav", "gaurav@gmail.com", 4578512503L);
-		User user3=new User(103, "Harsh", "harsh@gmail.com", 4584541303L);
-		
-		users.put(user1.getUserId(),user1 );
-		users.put(user2.getUserId(), user2);
-		users.put(user3.getUserId(), user3);
-	}
+	@Autowired
+	UserRepo repo;
 	
 	public List<User> getListOfUsers(){
-		List<User> allUser=new ArrayList<User>();
-		users.forEach((k,v)->allUser.add(v));
-		return allUser;
+		return repo.getAllUsers();
 	}
 	
 	public User getUser(int userId) {
-		return users.get(userId);
+		return repo.getUser(userId);
 	}
 	
+	@Transactional
 	public User addUser(User user) {
-		users.put(user.getUserId(),user);
-		return user;
+		return repo.addUser(user);
 	}
 	
+	@Transactional
 	public boolean deleteUser(int userId) {
-		 users.remove(userId);
-		 return !users.containsKey(userId);
+		User user=getUser(userId);
+		 return repo.deleteUser(user);
 	}
 
-	public User updateUse(User newUserData) {
-		User oldUserData=users.get(newUserData.getUserId());
-		oldUserData.setEmail(newUserData.getEmail());
-		oldUserData.setPhone(newUserData.getPhone());
-		oldUserData.setUserName(newUserData.getUserName());
-		return oldUserData;
+	@Transactional
+	public User updateUser(User newUserData) {
+		return repo.updateUser(newUserData);
 		
 	}
 	
