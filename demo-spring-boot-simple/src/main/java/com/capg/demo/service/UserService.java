@@ -25,7 +25,11 @@ public class UserService {
 	}
 	
 	public User getUserByEmail(String email) {
-		return jpaRepo.checkByEmail(email);
+		User user= jpaRepo.checkByEmail(email);
+		if(user==null) {
+			throw new UserNotFoundException("User Not Found with email : ["+email+"]");
+		}
+		return user;
 	}
 	
 	public List<User> getAllUser(){

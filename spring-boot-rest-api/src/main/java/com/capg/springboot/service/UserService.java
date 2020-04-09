@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.capg.springboot.exceptions.UserNotFoundException;
 import com.capg.springboot.model.User;
 import com.capg.springboot.repository.UserJpaRepo;
 import com.capg.springboot.repository.UserRepo;
@@ -22,7 +23,7 @@ public class UserService {
 //	@Autowired
 //	UserRepo repo;
 	
-	@Autowired
+	@Autowired(required = true)
 	UserJpaRepo userRepo;
 	
 	public List<User> getListOfUsers(){
@@ -33,6 +34,9 @@ public class UserService {
 	
 	public User getUser(int userId) {
 		//return repo.getUser(userId);
+		if(!userRepo.existsById(userId)) {
+			throw new UserNotFoundException("User with id : ["+userId+"] Not Found"); 
+		}
 		return userRepo.getOne(userId);
 	}
 	
