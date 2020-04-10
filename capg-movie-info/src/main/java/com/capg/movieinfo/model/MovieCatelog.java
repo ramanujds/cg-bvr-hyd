@@ -1,21 +1,9 @@
-package com.capg.moviecatelog.model;
+package com.capg.movieinfo.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
-
-@Entity
 
 public class MovieCatelog {
 
-	@Id
+	
 	private long id;
 	private String movieName;
 	public MovieCatelog() {
