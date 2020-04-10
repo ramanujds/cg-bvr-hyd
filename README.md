@@ -7,7 +7,7 @@ Instructions for Spring Boot with JSP
 
 3) Add Tomcat Jasper Dependency to pom.xml
 
-# How add Oracle to Maven Project
+# How add Oracle Depoendency to Maven Project
 
 1) Download ojdbc6.jar
 2) Download Maven - https://mirrors.estointernet.in/apache/maven/maven-3/3.6.3/source/apache-maven-3.6.3-src.zip
