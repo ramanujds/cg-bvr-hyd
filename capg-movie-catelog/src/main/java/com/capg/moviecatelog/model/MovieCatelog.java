@@ -2,6 +2,7 @@ package com.capg.moviecatelog.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -18,6 +19,15 @@ public class MovieCatelog {
 	@Id
 	private long id;
 	private String movieName;
+	@Transient
+	public int port;
+	
+	public int getPort() {
+		return port;
+	}
+	public void setPort(int port) {
+		this.port = port;
+	}
 	public MovieCatelog() {
 		// TODO Auto-generated constructor stub
 	}

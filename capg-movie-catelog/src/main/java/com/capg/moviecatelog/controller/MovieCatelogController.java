@@ -3,6 +3,7 @@ package com.capg.moviecatelog.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,9 +21,15 @@ public class MovieCatelogController {
 
 	@Autowired
 	MovieCatelogService service;
+	@Autowired
+	Environment env;
+	
 	@GetMapping("/id/{id}")
 	public MovieCatelog getMovieCatelog(@PathVariable long id) {
-		return service.getMovieCatelog(id);
+		MovieCatelog movie= service.getMovieCatelog(id);
+		int port=Integer.parseInt(env.getProperty("local.server.port"));
+		movie.setPort(port);
+		return movie;
 	}
 	
 	@GetMapping("/all")

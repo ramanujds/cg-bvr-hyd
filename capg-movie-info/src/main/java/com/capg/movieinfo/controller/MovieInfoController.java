@@ -20,11 +20,13 @@ public class MovieInfoController {
 	@GetMapping("/id/{id}")
 	public MovieInfo getMovieInfo(@PathVariable long id) {
 		
-		MovieCatelog catelog=rt.getForObject("http://movie-catelog-service/catelog/id/"+id, MovieCatelog.class);
-		MovieRating rating=rt.getForObject("http://movie-rating-service/rating/id/"+id, MovieRating.class);
+		MovieCatelog catelog=rt.getForObject("http://localhost:8200/catelog/id/"+id, MovieCatelog.class);
+		MovieRating rating=rt.getForObject("http://localhost:8300/rating/id/"+id, MovieRating.class);
 		
 		
 		MovieInfo movie=new MovieInfo(id,rating.getRating(),catelog.getMovieName());
+		movie.setCatelogServicePort(catelog.getPort());
+		movie.setRatingServicePort(rating.getPort());
 		return movie;
 	}
 	

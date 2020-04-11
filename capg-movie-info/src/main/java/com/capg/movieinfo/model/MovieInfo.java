@@ -6,7 +6,25 @@ public class MovieInfo {
 	private long id;
 	private double rating;
 	private String movieName;
+     private int ratingServicePort;
+     private int catelogServicePort;
+     
 
+	
+	
+
+	public int getRatingServicePort() {
+		return ratingServicePort;
+	}
+	public void setRatingServicePort(int ratingServicePort) {
+		this.ratingServicePort = ratingServicePort;
+	}
+	public int getCatelogServicePort() {
+		return catelogServicePort;
+	}
+	public void setCatelogServicePort(int catelogServicePort) {
+		this.catelogServicePort = catelogServicePort;
+	}
 	public String getMovieName() {
 		return movieName;
 	}

@@ -6,6 +6,14 @@ public class MovieCatelog {
 	
 	private long id;
 	private String movieName;
+public int port;
+	
+	public int getPort() {
+		return port;
+	}
+	public void setPort(int port) {
+		this.port = port;
+	}
 	public MovieCatelog() {
 		// TODO Auto-generated constructor stub
 	}

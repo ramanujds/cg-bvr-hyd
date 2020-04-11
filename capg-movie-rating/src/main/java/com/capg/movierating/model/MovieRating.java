@@ -2,6 +2,7 @@ package com.capg.movierating.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -14,6 +15,16 @@ public class MovieRating {
 	@Id
 	private Long id;
 	private double rating;
+	@Transient
+	private int port;
+	
+	
+	public int getPort() {
+		return port;
+	}
+	public void setPort(int port) {
+		this.port = port;
+	}
 	public MovieRating() {
 		// TODO Auto-generated constructor stub
 	}

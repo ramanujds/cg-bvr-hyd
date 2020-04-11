@@ -5,6 +5,15 @@ public class MovieRating {
 
 	private Long id;
 	private double rating;
+private int port;
+	
+	
+	public int getPort() {
+		return port;
+	}
+	public void setPort(int port) {
+		this.port = port;
+	}
 	public MovieRating() {
 		// TODO Auto-generated constructor stub
 	}
