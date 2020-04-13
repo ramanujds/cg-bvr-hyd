@@ -1,15 +1,16 @@
-package com.capg.movierating;
+package com.capg.eureka;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 
 @SpringBootApplication
-@EnableEurekaClient
-public class CapgMovieRatingApplication {
+@EnableEurekaServer
+public class CapgEurekaServerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CapgMovieRatingApplication.class, args);
+		SpringApplication.run(CapgEurekaServerApplication.class, args);
 	}
 
 }
