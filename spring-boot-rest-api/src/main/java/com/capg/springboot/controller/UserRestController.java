@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,7 +22,9 @@ import org.springframework.web.server.ResponseStatusException;
 import com.capg.springboot.exceptions.UserNotFoundException;
 import com.capg.springboot.model.User;
 import com.capg.springboot.service.UserService;
-
+@CrossOrigin(origins = {"http://localhost:4200"},methods = {
+		RequestMethod.DELETE,RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT
+})
 @RestController
 @RequestMapping("/api")
 public class UserRestController {
@@ -29,11 +32,11 @@ public class UserRestController {
 	UserService service;
 
 	//@RequestMapping(value = "/message", method = RequestMethod.GET)
-	@GetMapping("/message")
-	public String getMessage() {
-		return "Hello World";
-	}
-	
+//	@GetMapping("/message")
+//	public String getMessage() {
+//		return "Hello World";
+//	}
+//	
 	@GetMapping("/users")
 	public ResponseEntity<List<User>> getAllUser(){
 		List<User> allUsers=service.getListOfUsers();
@@ -56,16 +59,16 @@ public class UserRestController {
 		return new ResponseEntity<User>(user,HttpStatus.CREATED);
 	}
 	
-	@GetMapping("/divide/{x}/{y}")
-	public int divide(@PathVariable int x, @PathVariable int y) {
-		try {
-		return x/y;
-		}
-		catch(Exception ex) {
-			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
-												"Y canoot be Zero",ex);
-		}
-	}
+//	@GetMapping("/divide/{x}/{y}")
+//	public int divide(@PathVariable int x, @PathVariable int y) {
+//		try {
+//		return x/y;
+//		}
+//		catch(Exception ex) {
+//			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
+//												"Y canoot be Zero",ex);
+//		}
+//	}
 	
 	@PutMapping("/users")
 	public ResponseEntity<User> updateUser(@RequestBody User user){
@@ -82,7 +85,9 @@ public class UserRestController {
 	@DeleteMapping("/users/id/{id}")
 	public ResponseEntity<User> deleteUser(@PathVariable("id") int userId) {
 		
+		if(service.deleteUser(userId))
 			return new ResponseEntity<User>(HttpStatus.OK);
+		return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
 		
 	}
 	

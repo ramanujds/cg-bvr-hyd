@@ -15,11 +15,8 @@ public class User {
 	private int userId;
 	private String userName;
 	private String email;
-	@JsonIgnore
 	private long phone;
 	
-	@Transient
-	int xyz;
 	
 	public User(int userId, String userName, String email, long phone) {
 		super();
