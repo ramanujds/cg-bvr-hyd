@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.capg.movierating.model.MovieRating;
+import com.capg.movierating.model.RatingList;
 import com.capg.movierating.service.MovieRatingService;
 
 
@@ -33,12 +34,16 @@ public class MovieRatingController {
 	}
 	
 	@GetMapping("/all")
-	public List<MovieRating> getAllMovieRating(){
-		return service.getAllMovieRating();
+	public RatingList getAllMovieRating(){
+		int port=Integer.parseInt(env.getProperty("local.server.port"));
+		RatingList ratingList=new RatingList(service.getAllMovieRating());
+		ratingList.setPort(port);
+		return ratingList;
+		
 	}
 	@PostMapping("/add")
 	public MovieRating addMovieRating(@RequestBody MovieRating movie) {
-		System.out.println(movie);
+		
 		return service.addMovieRating(movie);
 	}
 

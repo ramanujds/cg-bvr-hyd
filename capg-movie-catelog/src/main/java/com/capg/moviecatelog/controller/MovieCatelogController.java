@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.capg.moviecatelog.model.CatelogList;
 import com.capg.moviecatelog.model.MovieCatelog;
 import com.capg.moviecatelog.service.MovieCatelogService;
 
@@ -33,8 +34,9 @@ public class MovieCatelogController {
 	}
 	
 	@GetMapping("/all")
-	public List<MovieCatelog> getAllMovieCatelog(){
-		return service.getAllMovieCatelog();
+	public CatelogList getAllMovieCatelog(){
+		CatelogList catelogList=new CatelogList(service.getAllMovieCatelog());
+		return catelogList;
 	}
 	@PostMapping("/add")
 	public MovieCatelog addMovieCatelog(@RequestBody MovieCatelog movie) {

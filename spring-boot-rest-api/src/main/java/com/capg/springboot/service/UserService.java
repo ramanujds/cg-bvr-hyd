@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
+import javax.management.RuntimeErrorException;
 
 import org.hibernate.loader.plan.exec.process.spi.ReturnReader;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +44,10 @@ public class UserService {
 	@Transactional
 	public User addUser(User user) {
 		//return repo.addUser(user);
+		System.out.println(user);
+		if(userRepo.existsById(user.getUserId())) {
+			throw new RuntimeException("User Already Exists");
+		}
 		return userRepo.save(user);
 	}
 	

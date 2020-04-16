@@ -10,7 +10,9 @@ public class MovieInfo {
      private int catelogServicePort;
      
 
-	
+	public MovieInfo() {
+		// TODO Auto-generated constructor stub
+	}
 	
 
 	public int getRatingServicePort() {

@@ -17,6 +17,13 @@ public class UserErrorController {
 		
 	}
 	
+	@ExceptionHandler(Exception.class)
+	@ResponseStatus(value = HttpStatus.BAD_REQUEST, reason = "Invalid Data" , code = HttpStatus.BAD_REQUEST)
+	public void handleException() {
+		
+	}
+	
+	
 //	@ExceptionHandler({ArithmeticException.class,ArrayIndexOutOfBoundsException.class})
 //	@ResponseStatus(value = HttpStatus.BAD_REQUEST,reason = "Values are invalid")
 //	public void handleCommonException() {
