@@ -30,14 +30,18 @@ Instructions for Spring Boot with JSP
 7) Create Controller/Create RestController
 8) Create View
 
-#Sonar-Cube Step-By-Step
+# Sonar-Cube Step-By-Step
 Step 1 - Download Sonar Cube (7.7)
+
 Step 2 - Extract and run StartSonar.bat
+
 Step 3 - Add global maven settings
+
 	- .m2/settings.xml
 *visit - (docs.sonarqube.org/latest/analysis/scan/sonarscanner-for-maven)
 
 Step 4 - Add Dependency to pom.xml
+
 	<dependency>
 		<groupId>org.sonarsource.scanner.maven</groupId>
       		<artifactId>sonar-maven-plugin</artifactId>
