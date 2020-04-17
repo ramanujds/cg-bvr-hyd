@@ -6,9 +6,7 @@ public class CatelogList {
 
 	private List<MovieCatelog> listOfMovie;
 	
-	public CatelogList() {
-		// TODO Auto-generated constructor stub
-	}
+	public CatelogList() {}
 
 	public List<MovieCatelog> getListOfMovie() {
 		return listOfMovie;

@@ -1,10 +1,10 @@
 package com.capg.moviecatelog.controller;
 
-import java.util.List;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
-import org.springframework.stereotype.Service;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,14 +16,19 @@ import com.capg.moviecatelog.model.CatelogList;
 import com.capg.moviecatelog.model.MovieCatelog;
 import com.capg.moviecatelog.service.MovieCatelogService;
 
+
 @RestController
 @RequestMapping("/catelog")
 public class MovieCatelogController {
 
 	@Autowired
-	MovieCatelogService service;
+	private MovieCatelogService service;
 	@Autowired
-	Environment env;
+	private Environment env;
+	
+
+	
+	
 	
 	@GetMapping("/id/{id}")
 	public MovieCatelog getMovieCatelog(@PathVariable long id) {
@@ -35,8 +40,8 @@ public class MovieCatelogController {
 	
 	@GetMapping("/all")
 	public CatelogList getAllMovieCatelog(){
-		CatelogList catelogList=new CatelogList(service.getAllMovieCatelog());
-		return catelogList;
+		return new CatelogList(service.getAllMovieCatelog());
+		
 	}
 	@PostMapping("/add")
 	public MovieCatelog addMovieCatelog(@RequestBody MovieCatelog movie) {

@@ -4,13 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Transient;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 
 @Entity
 
@@ -29,7 +23,6 @@ public class MovieCatelog {
 		this.port = port;
 	}
 	public MovieCatelog() {
-		// TODO Auto-generated constructor stub
 	}
 	public long getId() {
 		return id;
