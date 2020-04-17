@@ -18,6 +18,10 @@ class MovieCatelogServiceTest {
 	private MovieCatelogRepo repo;
 	//MovieCatelog catelog=new MovieCatelog(5001L, "KGF");
 	
+	@BeforeEach
+	public void setUp() {
+		System.out.println("Capg - Tset Started");
+	}
 	
 
 	@Test
@@ -42,10 +46,11 @@ class MovieCatelogServiceTest {
 //		
 //	}
 //	
-//	@AfterEach
-//	void cleanUp() throws Exception {
-//		
-//		repo.delete(catelog);
-//	}
+	@AfterEach
+	void cleanUp() throws Exception {
+		
+		System.out.println("Capg - Test Completed..");
+		
+	}
 
 }
