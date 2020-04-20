@@ -18,6 +18,7 @@ import com.capg.movieinfo.model.MovieCatelog;
 import com.capg.movieinfo.model.MovieInfo;
 import com.capg.movieinfo.model.MovieRating;
 import com.capg.movieinfo.model.RatingList;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
 @RestController
 @RequestMapping("/info")
@@ -27,6 +28,7 @@ public class MovieInfoController {
 	@Autowired
 	RestTemplate rt;
 	@GetMapping("/id/{id}")
+	//@HystrixCommand(fallbackMethod = "getMovieInfoFallback")
 	public MovieInfo getMovieInfo(@PathVariable long id) {
 		
 		MovieCatelog catelog=rt.getForObject("http://movie-catelog-service/catelog/id/"+id, MovieCatelog.class);
@@ -71,6 +73,13 @@ public class MovieInfoController {
 		return movies;
 		
 	
+	}
+	
+	
+	public MovieInfo getMovieInfoFallback(@PathVariable long id){
+		MovieInfo movie=new MovieInfo(id, 4.5, "KGF 2");
+		return movie;
+		
 	}
 	
 }

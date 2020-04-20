@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.capg.moviecatelog.model.CatelogList;
 import com.capg.moviecatelog.model.MovieCatelog;
 import com.capg.moviecatelog.service.MovieCatelogService;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
 
 @RestController
@@ -31,10 +32,17 @@ public class MovieCatelogController {
 	
 	
 	@GetMapping("/id/{id}")
+	@HystrixCommand(fallbackMethod = "getMovieCatelogFallback")
 	public MovieCatelog getMovieCatelog(@PathVariable long id) {
 		MovieCatelog movie= service.getMovieCatelog(id);
 		int port=Integer.parseInt(env.getProperty("local.server.port"));
 		movie.setPort(port);
+		return movie;
+	}
+	
+	
+	public MovieCatelog getMovieCatelogFallback(@PathVariable long id) {
+		MovieCatelog movie=new MovieCatelog(id,"Lion King");
 		return movie;
 	}
 	
