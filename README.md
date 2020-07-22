@@ -14,12 +14,15 @@ Instructions for Spring Boot with JSP
 3) Run Command (CMD) : 
     mvn install:install-file -Dfile=[Path to ojdbc6.jar] -DgroupId=com.oracle -DartifactId=ojdbc6 -Dversion=11.2.0 -Dpackaging=jar
 4) Add the following dependency to maven project (pom.xml)
+
+```xml
         <dependency>
             <groupId>com.oracle</groupId>
             <artifactId>ojdbc6</artifactId>
             <version>11.2.0</version>
         </dependency>
-        
+  ```
+  
 # Steps for Spring-JPA Integration
 1) Add JPA Starter Dependency to pom.xml
 2) Add jdbc driver for oracle
