@@ -1,4 +1,4 @@
-# capgemini-bvrit
+# Instructions and Notes
 
 Instructions for Spring Boot with JSP
 1) Create a folder "webapp" inside src->main->webapp
